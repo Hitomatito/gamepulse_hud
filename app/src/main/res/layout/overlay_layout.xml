@@ -1,41 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp">
 
-    <TextView
-        android:id="@+id/txtFPS"
-        android:layout_width="wrap_content"
+    <!-- FPS Display -->
+    <LinearLayout
+        android:id="@+id/fps_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/overlay_text"
-        android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="FPS: 60" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="4dp">
 
-    <TextView
-        android:id="@+id/txtCPU"
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fps_icon"
+            android:textSize="16sp"
+            android:layout_marginEnd="4dp" />
+
+        <TextView
+            android:id="@+id/txtFPS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/overlay_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:shadowColor="#80000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            tools:text="FPS: 60" />
+    </LinearLayout>
+
+    <!-- CPU Temperature Display -->
+    <LinearLayout
+        android:id="@+id/cpu_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textColor="@color/overlay_text"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/txtFPS"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="CPU: 45.0°C" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="4dp">
 
-    <TextView
-        android:id="@+id/txtGPU"
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cpu_icon"
+            android:textSize="16sp"
+            android:layout_marginEnd="4dp" />
+
+        <TextView
+            android:id="@+id/txtCPU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/overlay_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:shadowColor="#80000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            tools:text="CPU: 45.0°C" />
+    </LinearLayout>
+
+    <!-- GPU Temperature Display -->
+    <LinearLayout
+        android:id="@+id/gpu_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textColor="@color/overlay_text"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/txtCPU"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="GPU: 55.0°C" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gpu_icon"
+            android:textSize="16sp"
+            android:layout_marginEnd="4dp" />
+
+        <TextView
+            android:id="@+id/txtGPU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/overlay_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:shadowColor="#80000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            tools:text="GPU: 55.0°C" />
+    </LinearLayout>
+
+</LinearLayout>

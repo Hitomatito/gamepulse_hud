@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">GamePulse_HUD</string>
+    
+    <!-- Settings Activity -->
+    <string name="settings_title">Configuraciones</string>
+    <string name="text_settings">Configuración de Texto</string>
+    <string name="display_settings">Configuración de Pantalla</string>
+    <string name="position_settings">Configuración de Posición</string>
+    <string name="font_settings">Configuración de Fuente</string>
+    
+    <!-- Button text -->
+    <string name="save">Guardar</string>
+    <string name="reset">Restablecer</string>
+    <string name="preview">Vista Previa</string>
+    
+    <!-- Settings saved -->
+    <string name="settings_saved">Configuración guardada</string>
+    <string name="settings_reset">Configuración restablecida</string>
+    <string name="preview_activated">Vista previa activada</string>
+    
+    <!-- Overlay icons -->
+    <string name="fps_icon">🎮 </string>
+    <string name="cpu_icon">🔥 </string>
+    <string name="gpu_icon">⚡ </string>
 </resources>

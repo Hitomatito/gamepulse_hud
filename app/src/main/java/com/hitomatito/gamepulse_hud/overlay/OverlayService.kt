@@ -9,19 +9,19 @@ import android.content.Intent
 import android.graphics.PixelFormat
 import android.os.Build
 import android.os.IBinder
+import android.provider.Settings
 import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
 import android.view.WindowManager
-import android.widget.TextView
 import androidx.core.app.NotificationCompat
 import com.hitomatito.gamepulse_hud.R
 import com.hitomatito.gamepulse_hud.core.SystemMetrics
 import com.hitomatito.gamepulse_hud.core.TemperatureReader
+import com.hitomatito.gamepulse_hud.utils.PreferencesManager
 
 class OverlayService : Service() {
     private lateinit var windowManager: WindowManager
-    private lateinit var overlayView: View
+    private lateinit var overlayView: OverlayView
+    private lateinit var preferencesManager: PreferencesManager
     private val temperatureReader by lazy { TemperatureReader(this) }
     private val systemMetrics by lazy { SystemMetrics() }
 
@@ -29,50 +29,64 @@ class OverlayService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        setupOverlay()
-        startMetricsCollection()
-        startForeground(NOTIFICATION_ID, createNotification())
+        preferencesManager = PreferencesManager(this)
+        
+        // Verificar permisos antes de crear la overlay
+        if (!Settings.canDrawOverlays(this)) {
+            stopSelf()
+            return
+        }
+        
+        try {
+            setupOverlay()
+            startMetricsCollection()
+            startForeground(NOTIFICATION_ID, createNotification())
+        } catch (e: Exception) {
+            e.printStackTrace()
+            stopSelf()
+        }
     }
 
     @SuppressLint("InflateParams")
     private fun setupOverlay() {
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
-        overlayView = LayoutInflater.from(this).inflate(R.layout.overlay_layout, null)
+        overlayView = OverlayView(this)
+        val windowType =
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
 
         val params = WindowManager.LayoutParams(
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.WRAP_CONTENT,
-            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+            windowType,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or 
+            WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
             PixelFormat.TRANSLUCENT
         ).apply {
             gravity = Gravity.TOP or Gravity.START
-            x = 100
-            y = 300
+            x = preferencesManager.overlayPositionX
+            y = preferencesManager.overlayPositionY
         }
 
-        windowManager.addView(overlayView, params)
+        try {
+            windowManager.addView(overlayView, params)
+            // Pasar el WindowManager y los parámetros al OverlayView para el manejo de toques
+            overlayView.setWindowManager(windowManager, params)
+        } catch (e: WindowManager.BadTokenException) {
+            e.printStackTrace()
+            throw e
+        }
     }
 
     private fun startMetricsCollection() {
         systemMetrics.startFpsMonitoring { fps ->
             overlayView.post {
-                updateOverlay(
+                overlayView.updateMetrics(
                     fps = fps,
                     cpuTemp = temperatureReader.getTemperature("CPU"),
                     gpuTemp = temperatureReader.getTemperature("GPU")
                 )
             }
         }
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun updateOverlay(fps: Int, cpuTemp: Float?, gpuTemp: Float?) {
-        overlayView.findViewById<TextView>(R.id.txtFPS).text = "FPS: $fps"
-        overlayView.findViewById<TextView>(R.id.txtCPU).text =
-            "CPU: ${cpuTemp?.let { "%.1f°C".format(it) } ?: "N/A"}"
-        overlayView.findViewById<TextView>(R.id.txtGPU).text =
-            "GPU: ${gpuTemp?.let { "%.1f°C".format(it) } ?: "N/A"}"
     }
 
     @SuppressLint("ObsoleteSdkInt")
@@ -93,7 +107,8 @@ class OverlayService : Service() {
 
         return NotificationCompat.Builder(this, channelId)
             .setContentTitle("GamePulse HUD en ejecución")
-            .setSmallIcon(android.R.drawable.ic_dialog_info) // Changed R.drawable.ic_stat_overlay to a system icon
+            .setContentText("Monitor de rendimiento activo")
+            .setSmallIcon(android.R.drawable.ic_dialog_info)
             .setOngoing(true)
             .build()
     }

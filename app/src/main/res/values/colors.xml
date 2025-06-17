@@ -3,4 +3,21 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="overlay_text">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    
+    <!-- Settings Activity Colors - Light Theme -->
+    <color name="settings_background">#F5F5F5</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="button_primary">#4CAF50</color>
+    <color name="button_secondary">#FF9800</color>
+    <color name="button_accent">#2196F3</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="divider_color">#E0E0E0</color>
+    <color name="surface_color">#FFFFFF</color>
+    
+    <!-- Overlay colors -->
+    <color name="overlay_background_primary">#80000000</color>
+    <color name="overlay_background_secondary">#CC000000</color>
+    <color name="overlay_transparent">#00000000</color>
 </resources>

@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <shape
-        android:shape="rectangle">
-        <solid android:color="#80000000"/>
-        <corners android:radius="8dp"/>
-    </shape>
-</selector>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    
+    <!-- Background completamente transparente -->
+    <solid android:color="@color/overlay_transparent" />
+    
+    <!-- Sin bordes por defecto -->
+    <stroke
+        android:width="0dp"
+        android:color="@color/overlay_transparent" />
+    
+    <!-- Rounded corners -->
+    <corners android:radius="12dp" />
+    
+</shape>

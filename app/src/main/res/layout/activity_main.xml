@@ -1,19 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/settings_background"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
+    <!-- App Title -->
     <TextView
+        android:id="@+id/tvAppTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="GamePulse HUD"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_text"
+        android:layout_marginTop="48dp"
+        android:maxWidth="600dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- App Description -->
+    <TextView
+        android:id="@+id/tvAppDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Monitor de rendimiento en tiempo real para juegos"
+        android:textSize="16sp"
+        android:textColor="@color/secondary_text"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:maxWidth="600dp"
+        app:layout_constraintTop_toBottomOf="@id/tvAppTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Status Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:maxWidth="600dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tvAppDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/tvStatusTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estado del HUD"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_text"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvStatusMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Iniciando HUD..."
+                android:textSize="14sp"
+                android:textColor="@color/secondary_text" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Buttons Container -->
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:maxWidth="600dp"
+        app:layout_constraintTop_toBottomOf="@id/cardStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Settings Button -->
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="⚙️ Configuración"
+            android:textSize="16sp"
+            android:backgroundTint="@color/button_primary"
+            android:textColor="@color/white"
+            android:layout_marginBottom="12dp"
+            android:drawablePadding="8dp" />
+
+        <!-- Toggle HUD Button -->
+        <Button
+            android:id="@+id/btnToggleHUD"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="🎮 Iniciar HUD"
+            android:textSize="16sp"
+            android:backgroundTint="@color/button_accent"
+            android:textColor="@color/white"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Exit Button -->
+        <Button
+            android:id="@+id/btnExit"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="❌ Salir"
+            android:textSize="16sp"
+            android:backgroundTint="@color/button_secondary"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <!-- Footer -->
+    <TextView
+        android:id="@+id/tvFooter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="GamePulse HUD v1.0"
+        android:textSize="12sp"
+        android:textColor="@color/secondary_text"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
