@@ -17,8 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GamePulse_HUD"
-        tools:targetApi="34">
-        <activity
+        tools:targetApi="34">        <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -27,6 +26,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:exported="false"
+            android:label="Configuración HUD"
+            android:parentActivityName=".ui.MainActivity" />
 
         <service
             android:name=".overlay.OverlayService"

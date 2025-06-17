@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Settings Activity Colors - Dark Theme -->
+    <color name="settings_background">#121212</color>
+    <color name="primary_text">#FFFFFF</color>
+    <color name="secondary_text">#B3FFFFFF</color>
+    <color name="button_primary">#66BB6A</color>
+    <color name="button_secondary">#FFB74D</color>
+    <color name="button_accent">#42A5F5</color>
+    <color name="card_background">#1E1E1E</color>
+    <color name="divider_color">#333333</color>
+    <color name="surface_color">#1E1E1E</color>
+    
+    <!-- Overlay colors for dark theme -->
+    <color name="overlay_background_primary">#80000000</color>
+    <color name="overlay_background_secondary">#CC000000</color>
+</resources>
