@@ -1,1 +1,4 @@
-/build
+# El .gitignore raíz ya cubre **/build/
+# Mantener este archivo mínimo para compatibilidad local
+
+# Puedes añadir ignores específicos de la app aquí si lo deseas

@@ -1,15 +1,69 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+
+# === Android / Gradle ===
+
+# Gradle caches and project specific files
+.gradle/
+
+# Build outputs
+build/
+**/build/
+
+# Gradle wrapper (keep wrapper files in repo, not wrapper jar caches)
+
+# Local SDK properties
 local.properties
+
+# === IDEs ===
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+
+# Optional: if you want to keep some .idea files in repo, list them explicitly
+
+# VS Code
+.vscode/
+
+# === Native / NDK ===
+.externalNativeBuild/
+.cxx/
+
+# Captures and outputs
+captures/
+
+# === Generated binaries ===
+*.apk
+*.ap_
+*.aab
+*.apks
+outputs/
+generated/
+
+# === Signing keys (never commit) ===
+*.jks
+*.keystore
+*.pem
+*.p12
+signing.properties
+keystore.properties
+
+# === OS files ===
+.DS_Store
+Thumbs.db
+
+# === Logs / temp ===
+*.log
+*.tmp
+
+# === Build artifacts / classes ===
+*.class
+*.dex
+*.jar
+*.war
+*.ear
+
+# Keep workspace, shelves
+shelf/
+workspace.xml
+
+# Keep this file idempotent: other gitignores (app/.gitignore) are allowed but root covers everything
