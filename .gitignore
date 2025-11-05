@@ -19,6 +19,9 @@ local.properties
 .idea/
 *.iml
 
+# Ignorar posible carpeta o archivo específico pedido
+g.idea
+
 # Optional: if you want to keep some .idea files in repo, list them explicitly
 
 # VS Code
