@@ -26,8 +26,13 @@ g.idea
 
 # VS Code
 .vscode/
+*.code-workspace
+.history/
 
-# === Native / NDK ===
+# Android Studio / IntelliJ
+.idea/
+*.iml
+.android/
 .externalNativeBuild/
 .cxx/
 
