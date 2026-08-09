@@ -158,10 +158,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateHUDStatus() {
         if (isHUDRunning) {
-            btnToggleHUD.text = "⏹️ Detener HUD"
+            btnToggleHUD.setText(R.string.toggle_hud_stop)
             btnToggleHUD.setBackgroundColor(ContextCompat.getColor(this, R.color.button_secondary))
         } else {
-            btnToggleHUD.text = "🎮 Iniciar HUD"
+            btnToggleHUD.setText(R.string.toggle_hud_start)
             btnToggleHUD.setBackgroundColor(ContextCompat.getColor(this, R.color.button_accent))
         }
     }

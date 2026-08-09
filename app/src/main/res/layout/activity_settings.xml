@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/settings_background"
     android:padding="8dp">
 
     <LinearLayout
@@ -18,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Configuración de GamePulse HUD"
+            android:text="@string/settings_activity_title"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/primary_text"
@@ -33,7 +32,7 @@
             android:layout_height="48dp"
             android:layout_marginBottom="24dp"
             android:paddingHorizontal="32dp"
-            android:text="🔄 Restablecer Configuración"
+            android:text="@string/reset_settings"
             android:backgroundTint="@color/button_secondary"
             android:textColor="@color/white"
             android:textSize="16sp" />
@@ -57,7 +56,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="⚙️ Configuración de Texto"
+                    android:text="@string/text_settings"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/primary_text"
@@ -67,7 +66,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tamaño del texto"
+                    android:text="@string/text_size_setting"
                     android:textColor="@color/secondary_text"
                     android:textSize="14sp" />
 
@@ -90,7 +89,7 @@
                         android:id="@+id/tvTextSizeValue"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
-                        android:text="16sp"
+                        android:text="@string/text_size_default"
                         android:textColor="@color/primary_text"
                         android:gravity="center" />
                 </LinearLayout>
@@ -99,7 +98,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Color del texto"
+                    android:text="@string/text_color_setting"
                     android:textColor="@color/secondary_text"
                     android:textSize="14sp" />
 
@@ -119,7 +118,7 @@
                         <TextView
                             android:layout_width="30dp"
                             android:layout_height="wrap_content"
-                            android:text="R"
+                            android:text="@string/color_red"
                             android:textColor="#FF0000"
                             android:textStyle="bold" />
 
@@ -141,7 +140,7 @@
                         <TextView
                             android:layout_width="30dp"
                             android:layout_height="wrap_content"
-                            android:text="G"
+                            android:text="@string/color_green"
                             android:textColor="#00FF00"
                             android:textStyle="bold" />
 
@@ -163,7 +162,7 @@
                         <TextView
                             android:layout_width="30dp"
                             android:layout_height="wrap_content"
-                            android:text="B"
+                            android:text="@string/color_blue"
                             android:textColor="#0000FF"
                             android:textStyle="bold" />
 
@@ -188,7 +187,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Vista previa: "
+                        android:text="@string/color_preview_label"
                         android:textColor="@color/secondary_text" />
                     <View
                         android:id="@+id/viewColorPreview"
@@ -202,7 +201,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Estilo de fuente"
+                    android:text="@string/font_style_setting"
                     android:textColor="@color/secondary_text"
                     android:textSize="14sp"
                     android:layout_marginTop="16dp" />
@@ -224,7 +223,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Peso de fuente"
+                    android:text="@string/font_weight_setting"
                     android:textColor="@color/secondary_text"
                     android:textSize="14sp" />
 
@@ -245,7 +244,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Vista previa del texto"
+                    android:text="@string/font_preview_title"
                     android:textColor="@color/secondary_text"
                     android:textSize="14sp" />
 
@@ -253,7 +252,7 @@
                     android:id="@+id/tvFontSample"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="FPS: 60 | CPU: 45°C | GPU: 55°C"
+                    android:text="@string/font_sample_text"
                     android:textSize="16sp"
                     android:textColor="@color/primary_text"
                     android:padding="12dp"
@@ -282,7 +281,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="📊 Elementos a Mostrar"
+                    android:text="@string/display_items_title"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/primary_text"
@@ -299,10 +298,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Mostrar FPS"
+                        android:text="@string/show_fps_setting"
                         android:textColor="@color/primary_text" />
 
-                    <Switch
+                    <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switchShowFps"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -320,10 +319,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Mostrar Temperatura CPU"
+                        android:text="@string/show_cpu_temp_setting"
                         android:textColor="@color/primary_text" />
 
-                    <Switch
+                    <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switchShowCpuTemp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -341,10 +340,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Mostrar Temperatura GPU"
+                        android:text="@string/show_gpu_temp_setting"
                         android:textColor="@color/primary_text" />
 
-                    <Switch
+                    <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switchShowGpuTemp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -373,7 +372,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="🎨 Apariencia"
+                    android:text="@string/appearance_title"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/primary_text"
@@ -383,7 +382,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Opacidad del fondo"
+                    android:text="@string/background_opacity_setting"
                     android:textColor="@color/secondary_text"
                     android:textSize="14sp" />
 
@@ -406,7 +405,7 @@
                         android:id="@+id/tvBackgroundOpacityValue"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
-                        android:text="80%"
+                        android:text="@string/background_opacity_default"
                         android:textColor="@color/primary_text"
                         android:gravity="center" />
                 </LinearLayout>
@@ -415,7 +414,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Radio de esquinas"
+                    android:text="@string/corner_radius_setting"
                     android:textColor="@color/secondary_text"
                     android:textSize="14sp" />
 
@@ -438,7 +437,7 @@
                         android:id="@+id/tvCornerRadiusValue"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
-                        android:text="8dp"
+                        android:text="@string/corner_radius_default"
                         android:textColor="@color/primary_text"
                         android:gravity="center" />
                 </LinearLayout>
@@ -465,7 +464,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="📍 Posición en Pantalla"
+                    android:text="@string/position_title"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/primary_text"
@@ -475,7 +474,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Posición Horizontal (X)"
+                    android:text="@string/position_x_setting"
                     android:textColor="@color/secondary_text"
                     android:textSize="14sp" />
 
@@ -498,7 +497,7 @@
                         android:id="@+id/tvPositionXValue"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
-                        android:text="100px"
+                        android:text="@string/position_x_default"
                         android:textColor="@color/primary_text"
                         android:gravity="center" />
                 </LinearLayout>
@@ -507,7 +506,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Posición Vertical (Y)"
+                    android:text="@string/position_y_setting"
                     android:textColor="@color/secondary_text"
                     android:textSize="14sp" />
 
@@ -530,7 +529,7 @@
                         android:id="@+id/tvPositionYValue"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
-                        android:text="300px"
+                        android:text="@string/position_y_default"
                         android:textColor="@color/primary_text"
                         android:gravity="center" />
                 </LinearLayout>

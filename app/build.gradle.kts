@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId = "com.hitomatito.gamepulse_hud"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 

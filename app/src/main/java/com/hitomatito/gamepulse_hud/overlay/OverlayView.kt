@@ -128,14 +128,18 @@ class OverlayView @JvmOverloads constructor(
 
     fun updateMetrics(fps: Int, cpuTemp: Float?, gpuTemp: Float?) {
         if (preferencesManager.showFps) {
-            txtFPS.text = "FPS: $fps"
+            txtFPS.text = context.getString(R.string.fps_value, fps)
         }
         if (preferencesManager.showCpuTemp) {
-            txtCPU.text = "CPU: ${cpuTemp?.let { "%.1f°C".format(it) } ?: "N/A"}"        }
+            txtCPU.text = context.getString(R.string.cpu_value, formatTemperature(cpuTemp))
+        }
         if (preferencesManager.showGpuTemp) {
-            txtGPU.text = "GPU: ${gpuTemp?.let { "%.1f°C".format(it) } ?: "N/A"}"
+            txtGPU.text = context.getString(R.string.gpu_value, formatTemperature(gpuTemp))
         }
     }
+
+    private fun formatTemperature(temp: Float?): String =
+        temp?.let { "%.1f°C".format(it) } ?: "N/A"
 
     fun setWindowManager(windowManager: WindowManager, layoutParams: WindowManager.LayoutParams) {
         this.windowManager = windowManager
@@ -161,6 +165,7 @@ class OverlayView @JvmOverloads constructor(
                     true
                 }
                 MotionEvent.ACTION_UP -> {
+                    performClick()
                     // Guardar la nueva posición en las preferencias
                     layoutParams?.let { params ->
                         preferencesManager.overlayPositionX = params.x

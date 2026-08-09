@@ -11,10 +11,10 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.SeekBar
 import android.widget.Spinner
-import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import com.hitomatito.gamepulse_hud.R
 import com.hitomatito.gamepulse_hud.overlay.OverlayService
 import com.hitomatito.gamepulse_hud.utils.PreferencesManager
@@ -41,14 +41,11 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var colorBlueSeekBar: SeekBar
     private lateinit var colorPreview: View
 
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private lateinit var showFpsSwitch: Switch
+    private lateinit var showFpsSwitch: SwitchCompat
 
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private lateinit var showCpuTempSwitch: Switch
+    private lateinit var showCpuTempSwitch: SwitchCompat
 
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private lateinit var showGpuTempSwitch: Switch
+    private lateinit var showGpuTempSwitch: SwitchCompat
 
     private lateinit var positionXSeekBar: SeekBar
     private lateinit var positionYSeekBar: SeekBar
@@ -113,7 +110,6 @@ class SettingsActivity : AppCompatActivity() {
         resetButton = findViewById(R.id.btnReset)
     }
 
-    @SuppressLint("SetTextI18n")
     private fun setupFontSpinners() {
         // Configurar spinner de estilos de fuente
         val fontStyleAdapter = ArrayAdapter(this, R.layout.spinner_item, fontStyles)
@@ -126,16 +122,15 @@ class SettingsActivity : AppCompatActivity() {
         fontWeightSpinner.adapter = fontWeightAdapter
 
         // Configurar texto de muestra
-        fontSampleText.text = "FPS: 60 | CPU: 45°C | GPU: 55°C"
+        fontSampleText.text = getString(R.string.font_sample_text)
     }
 
     private fun setupListeners() {
         // Text size
         textSizeSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 val textSize = 10f + progress.toFloat() / 2f // Range: 10-60sp
-                textSizeLabel.text = "${textSize.toInt()}sp"
+                textSizeLabel.text = getString(R.string.text_size_value, textSize.toInt())
                 updateFontSample()
             }
 
@@ -178,10 +173,10 @@ class SettingsActivity : AppCompatActivity() {
         // Background opacity
         backgroundOpacitySeekBar.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
-            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 val opacity = progress / 100f
-                backgroundOpacityLabel.text = "${(opacity * 100).toInt()}%"
+                backgroundOpacityLabel.text =
+                    getString(R.string.background_opacity_value, (opacity * 100).toInt())
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -192,9 +187,8 @@ class SettingsActivity : AppCompatActivity() {
 
         // Corner radius
         cornerRadiusSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                cornerRadiusLabel.text = "${progress}dp"
+                cornerRadiusLabel.text = getString(R.string.corner_radius_value, progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -226,9 +220,8 @@ class SettingsActivity : AppCompatActivity() {
 
         // Position
         positionXSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                positionXLabel.text = "${progress}px"
+                positionXLabel.text = getString(R.string.position_value, progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -238,9 +231,8 @@ class SettingsActivity : AppCompatActivity() {
         })
 
         positionYSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                positionYLabel.text = "${progress}px"
+                positionYLabel.text = getString(R.string.position_value, progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -253,22 +245,22 @@ class SettingsActivity : AppCompatActivity() {
         resetButton.setOnClickListener { resetSettings() }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun loadCurrentSettings() {
         // Text size (10-60sp range)
         val currentTextSize = preferencesManager.textSize
         textSizeSeekBar.progress = ((currentTextSize - 10f) * 2f).toInt()
-        textSizeLabel.text = "${currentTextSize.toInt()}sp"
+        textSizeLabel.text = getString(R.string.text_size_value, currentTextSize.toInt())
 
         // Background opacity
         val currentOpacity = preferencesManager.backgroundOpacity
         backgroundOpacitySeekBar.progress = (currentOpacity * 100).toInt()
-        backgroundOpacityLabel.text = "${(currentOpacity * 100).toInt()}%"
+        backgroundOpacityLabel.text =
+            getString(R.string.background_opacity_value, (currentOpacity * 100).toInt())
 
         // Corner radius
         val currentRadius = preferencesManager.cornerRadius
         cornerRadiusSeekBar.progress = currentRadius.toInt()
-        cornerRadiusLabel.text = "${currentRadius.toInt()}dp"
+        cornerRadiusLabel.text = getString(R.string.corner_radius_value, currentRadius.toInt())
 
         // Color
         val currentColor = preferencesManager.textColor
@@ -285,8 +277,10 @@ class SettingsActivity : AppCompatActivity() {
         // Position
         positionXSeekBar.progress = preferencesManager.overlayPositionX
         positionYSeekBar.progress = preferencesManager.overlayPositionY
-        positionXLabel.text = "${preferencesManager.overlayPositionX}px"
-        positionYLabel.text = "${preferencesManager.overlayPositionY}px"
+        positionXLabel.text =
+            getString(R.string.position_value, preferencesManager.overlayPositionX)
+        positionYLabel.text =
+            getString(R.string.position_value, preferencesManager.overlayPositionY)
         // Font settings
         fontStyleSpinner.setSelection(preferencesManager.fontStyleIndex)
         fontWeightSpinner.setSelection(preferencesManager.fontWeightIndex)
@@ -366,7 +360,7 @@ class SettingsActivity : AppCompatActivity() {
     private fun resetSettings() {
         preferencesManager.resetToDefaults()
         loadCurrentSettings()
-        Toast.makeText(this, "Configuración restablecida", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.settings_reset), Toast.LENGTH_SHORT).show()
         restartOverlayService()
     }
 
