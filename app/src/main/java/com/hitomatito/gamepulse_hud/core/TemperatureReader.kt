@@ -1,29 +1,39 @@
 package com.hitomatito.gamepulse_hud.core
 
-import android.content.Context
 import android.util.Log
 import java.io.File
 
-class TemperatureReader(context: Context) {
-    private val thermalFiles = mapOf(
-        "CPU" to arrayOf(
-            "/sys/class/thermal/thermal_zone0/temp",
-            "/sys/devices/virtual/thermal/thermal_zone0/temp"
-        ),
-        "GPU" to arrayOf(
-            "/sys/class/thermal/thermal_zone1/temp",
-            "/sys/devices/virtual/thermal/thermal_zone2/temp"
-        )
-    )
+class TemperatureReader {
+    private val thermalDir = "/sys/class/thermal"
 
     fun getTemperature(type: String): Float? {
-        thermalFiles[type]?.forEach { path ->
-            try {
-                File(path).takeIf { it.exists() }?.let {
-                    return it.readText().trim().toFloatOrNull()?.div(1000)
-                }
+        val zones = File(thermalDir).listFiles { f -> f.name.startsWith("thermal_zone") }
+            ?: return null
+
+        zones.forEach { zone ->
+            val typeFile = File(zone, "type")
+            val tempFile = File(zone, "temp")
+            if (!typeFile.exists() || !tempFile.exists()) return@forEach
+
+            val zoneType = try {
+                typeFile.readText().trim().lowercase()
+            } catch (e: Exception) {
+                return@forEach
+            }
+
+            // Buscar por tipo de zona, no por índice (el índice varía por dispositivo/kernel)
+            val matches = when (type) {
+                "CPU" -> zoneType.startsWith("cpu")
+                "GPU" -> zoneType.startsWith("gpu") // cubre "gpu-*" y "gpuss-*"
+                else -> return null
+            }
+            if (!matches) return@forEach
+
+            return try {
+                tempFile.readText().trim().toFloatOrNull()?.div(1000)
             } catch (e: Exception) {
                 Log.e("TemperatureReader", "Error reading $type temp: ${e.message}")
+                null
             }
         }
         return null

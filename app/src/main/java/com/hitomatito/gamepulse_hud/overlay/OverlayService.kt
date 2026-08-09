@@ -22,7 +22,7 @@ class OverlayService : Service() {
     private lateinit var windowManager: WindowManager
     private lateinit var overlayView: OverlayView
     private lateinit var preferencesManager: PreferencesManager
-    private val temperatureReader by lazy { TemperatureReader(this) }
+    private val temperatureReader by lazy { TemperatureReader() }
     private val systemMetrics by lazy { SystemMetrics() }
 
     override fun onBind(intent: Intent?): IBinder? = null
