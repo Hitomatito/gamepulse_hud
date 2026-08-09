@@ -12,11 +12,11 @@ import android.widget.Button
 import android.widget.SeekBar
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import com.hitomatito.gamepulse_hud.R
 import com.hitomatito.gamepulse_hud.overlay.OverlayService
+import com.hitomatito.gamepulse_hud.utils.GamerToast
 import com.hitomatito.gamepulse_hud.utils.PreferencesManager
 
 class SettingsActivity : AppCompatActivity() {
@@ -42,6 +42,7 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var colorPreview: View
 
     private lateinit var showFpsSwitch: SwitchCompat
+    private lateinit var showFpsChartSwitch: SwitchCompat
 
     private lateinit var showCpuTempSwitch: SwitchCompat
 
@@ -97,6 +98,7 @@ class SettingsActivity : AppCompatActivity() {
 
         // Display switches
         showFpsSwitch = findViewById(R.id.switchShowFps)
+        showFpsChartSwitch = findViewById(R.id.switchShowFpsChart)
         showCpuTempSwitch = findViewById(R.id.switchShowCpuTemp)
         showGpuTempSwitch = findViewById(R.id.switchShowGpuTemp)
 
@@ -215,6 +217,7 @@ class SettingsActivity : AppCompatActivity() {
 
         // Switches
         showFpsSwitch.setOnCheckedChangeListener { _, _ -> saveSettings() }
+        showFpsChartSwitch.setOnCheckedChangeListener { _, _ -> saveSettings() }
         showCpuTempSwitch.setOnCheckedChangeListener { _, _ -> saveSettings() }
         showGpuTempSwitch.setOnCheckedChangeListener { _, _ -> saveSettings() }
 
@@ -271,6 +274,7 @@ class SettingsActivity : AppCompatActivity() {
 
         // Display options
         showFpsSwitch.isChecked = preferencesManager.showFps
+        showFpsChartSwitch.isChecked = preferencesManager.showFpsChart
         showCpuTempSwitch.isChecked = preferencesManager.showCpuTemp
         showGpuTempSwitch.isChecked = preferencesManager.showGpuTemp
 
@@ -343,6 +347,7 @@ class SettingsActivity : AppCompatActivity() {
 
         // Save display options
         preferencesManager.showFps = showFpsSwitch.isChecked
+        preferencesManager.showFpsChart = showFpsChartSwitch.isChecked
         preferencesManager.showCpuTemp = showCpuTempSwitch.isChecked
         preferencesManager.showGpuTemp = showGpuTempSwitch.isChecked
 
@@ -360,7 +365,7 @@ class SettingsActivity : AppCompatActivity() {
     private fun resetSettings() {
         preferencesManager.resetToDefaults()
         loadCurrentSettings()
-        Toast.makeText(this, getString(R.string.settings_reset), Toast.LENGTH_SHORT).show()
+        GamerToast.show(this, getString(R.string.settings_reset))
         restartOverlayService()
     }
 

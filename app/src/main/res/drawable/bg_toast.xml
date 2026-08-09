@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fondo del Toast: placa tipo tarjeta gamer -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#E6101B30" />
+    <corners android:radius="16dp" />
+    <stroke
+        android:width="1.5dp"
+        android:color="#B322D3EE" />
+</shape>

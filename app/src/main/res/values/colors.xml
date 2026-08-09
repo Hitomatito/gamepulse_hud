@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Gamer palette - Fijo (el tema fuerza modo oscuro; la main screen usa estos colores) -->
+    <color name="md_primary">#22D3EE</color>
+    <color name="md_on_primary">#0A0F1E</color>
+    <color name="md_primary_container">#0E2538</color>
+    <color name="md_on_primary_container">#A5F3FC</color>
+
+    <color name="md_secondary">#38BDF8</color>
+    <color name="md_on_secondary">#0A0F1E</color>
+    <color name="md_secondary_container">#0E1B33</color>
+    <color name="md_on_secondary_container">#CFFAFE</color>
+
+    <color name="md_tertiary">#4ADE80</color>
+    <color name="md_on_tertiary">#0A0F1E</color>
+
+    <color name="md_error">#F87171</color>
+    <color name="md_on_error">#450A0A</color>
+    <color name="md_error_container">#3B1216</color>
+    <color name="md_on_error_container">#FECACA</color>
+
+    <color name="md_surface">#0A0F1E</color>
+    <color name="md_on_surface">#F1F5F9</color>
+    <color name="md_surface_variant">#101A33</color>
+    <color name="md_on_surface_variant">#94A3B8</color>
+    <color name="md_outline">#334155</color>
+    <color name="md_outline_variant">#1E293B</color>
+    <color name="md_surface_container_low">#101B30</color>
+    <color name="md_surface_container">#121C34</color>
+    <color name="md_surface_container_high">#1A2745</color>
+
+    <!-- Overlay (texto siempre blanco sobre fondo oscuro del HUD) -->
     <color name="overlay_text">#FFFFFFFF</color>
-    
-    <!-- Settings Activity Colors - Light Theme -->
-    <color name="settings_background">#F5F5F5</color>
-    <color name="primary_text">#212121</color>
-    <color name="secondary_text">#757575</color>
-    <color name="button_primary">#4CAF50</color>
-    <color name="button_secondary">#FF9800</color>
-    <color name="button_accent">#2196F3</color>
-    <color name="divider_color">#E0E0E0</color>
-    <color name="surface_color">#FFFFFF</color>
+
+    <!-- Paleta fija "gamer" de la pantalla principal -->
+    <color name="game_bg_deep">#0B1020</color>
+    <color name="game_bg_mid">#101A33</color>
+    <color name="game_bg_dark">#0A0F1E</color>
+    <color name="game_cyan">#22D3EE</color>
+    <color name="game_green">#4ADE80</color>
+    <color name="game_red">#F87171</color>
+    <color name="game_text_primary">#F1F5F9</color>
+    <color name="game_text_dim">#94A3B8</color>
+    <color name="game_card_bg">#101B30</color>
+    <color name="game_card_stroke">#6638BDF8</color>
+    <color name="game_glow_cyan">#A62A8BF4</color>
 </resources>

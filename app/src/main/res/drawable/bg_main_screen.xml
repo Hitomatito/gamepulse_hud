@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fondo de la pantalla principal: degradado oscuro + resplandores de "escenario" -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base: degradado vertical -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="270"
+                android:startColor="@color/game_bg_deep"
+                android:centerColor="@color/game_bg_mid"
+                android:endColor="@color/game_bg_dark" />
+        </shape>
+    </item>
+
+    <!-- Resplandor cian (esquina superior derecha) -->
+    <item
+        android:gravity="top|end"
+        android:top="-140dp"
+        android:right="-140dp"
+        android:width="340dp"
+        android:height="340dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="170dp"
+                android:startColor="@color/game_glow_cyan"
+                android:endColor="#0022D3EE" />
+        </shape>
+    </item>
+
+    <!-- Resplandor violeta (esquina inferior izquierda) -->
+    <item
+        android:gravity="bottom|start"
+        android:bottom="-160dp"
+        android:left="-160dp"
+        android:width="380dp"
+        android:height="380dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="190dp"
+                android:startColor="#6614B8A6"
+                android:endColor="#0014B8A6" />
+        </shape>
+    </item>
+</layer-list>

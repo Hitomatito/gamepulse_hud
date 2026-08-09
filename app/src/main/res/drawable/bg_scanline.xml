@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Barrido de escaneo vertical muy sutil -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="270"
+        android:startColor="#0022D3EE"
+        android:centerColor="#1822D3EE"
+        android:endColor="#0022D3EE" />
+</shape>

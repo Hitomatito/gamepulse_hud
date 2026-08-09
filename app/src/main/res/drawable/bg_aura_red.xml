@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Aura roja (glow) del botón Detener HUD -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <gradient
+        android:type="radial"
+        android:gradientRadius="90dp"
+        android:startColor="#40F87171"
+        android:centerColor="#1FF87171"
+        android:endColor="#00F87171" />
+</shape>

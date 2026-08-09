@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Barra de ecualizador -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="270"
+        android:startColor="#FF22D3EE"
+        android:endColor="#FF0E7490" />
+    <corners android:radius="3dp" />
+</shape>

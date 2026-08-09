@@ -18,6 +18,7 @@ class PreferencesManager(context: Context) {
         private const val KEY_OVERLAY_POSITION_X = "overlay_position_x"
         private const val KEY_OVERLAY_POSITION_Y = "overlay_position_y"
         private const val KEY_SHOW_FPS = "show_fps"
+        private const val KEY_SHOW_FPS_CHART = "show_fps_chart"
         private const val KEY_SHOW_CPU_TEMP = "show_cpu_temp"
         private const val KEY_SHOW_GPU_TEMP = "show_gpu_temp"
         private const val KEY_CORNER_RADIUS = "corner_radius"
@@ -72,6 +73,10 @@ class PreferencesManager(context: Context) {
         get() = sharedPreferences.getBoolean(KEY_SHOW_CPU_TEMP, true)
         set(value) = sharedPreferences.edit { putBoolean(KEY_SHOW_CPU_TEMP, value) }
 
+    var showFpsChart: Boolean
+        get() = sharedPreferences.getBoolean(KEY_SHOW_FPS_CHART, true)
+        set(value) = sharedPreferences.edit { putBoolean(KEY_SHOW_FPS_CHART, value) }
+
     var showGpuTemp: Boolean
         get() = sharedPreferences.getBoolean(KEY_SHOW_GPU_TEMP, true)
         set(value) = sharedPreferences.edit { putBoolean(KEY_SHOW_GPU_TEMP, value) }
@@ -108,6 +113,7 @@ class PreferencesManager(context: Context) {
         showFps = true
         showCpuTemp = true
         showGpuTemp = true
+        showFpsChart = true
         cornerRadius = DEFAULT_CORNER_RADIUS
         overlayWidth = DEFAULT_OVERLAY_WIDTH
         overlayHeight = DEFAULT_OVERLAY_HEIGHT

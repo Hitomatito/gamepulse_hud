@@ -1,6 +1,7 @@
 package com.hitomatito.gamepulse_hud.overlay
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.widget.TextViewCompat
 import com.hitomatito.gamepulse_hud.R
 import com.hitomatito.gamepulse_hud.utils.PreferencesManager
 
@@ -22,6 +24,7 @@ class OverlayView @JvmOverloads constructor(
     private lateinit var txtFPS: TextView
     private lateinit var txtCPU: TextView
     private lateinit var txtGPU: TextView
+    private lateinit var fpsChart: MetricsChartView
     private lateinit var fpsContainer: View
     private lateinit var cpuContainer: View
     private lateinit var gpuContainer: View
@@ -46,6 +49,7 @@ class OverlayView @JvmOverloads constructor(
         txtFPS = findViewById(R.id.txtFPS)
         txtCPU = findViewById(R.id.txtCPU)
         txtGPU = findViewById(R.id.txtGPU)
+        fpsChart = findViewById(R.id.fpsChart)
         fpsContainer = findViewById(R.id.fps_container)
         cpuContainer = findViewById(R.id.cpu_container)
         gpuContainer = findViewById(R.id.gpu_container)
@@ -82,10 +86,25 @@ class OverlayView @JvmOverloads constructor(
             textView.typeface = finalTypeface
         }
 
-        // Apply visibility settings
+        // Aplicar visibilidad y color de la gráfica de FPS
+        if (preferencesManager.showFpsChart) {
+            fpsChart.visibility = View.VISIBLE
+            fpsChart.setChartColor(preferencesManager.textColor)
+        } else {
+            fpsChart.visibility = View.GONE
+            fpsChart.clear()
+        }
+
+        // Aplicar visibilidad de las filas
         fpsContainer.visibility = if (preferencesManager.showFps) View.VISIBLE else View.GONE
         cpuContainer.visibility = if (preferencesManager.showCpuTemp) View.VISIBLE else View.GONE
         gpuContainer.visibility = if (preferencesManager.showGpuTemp) View.VISIBLE else View.GONE
+
+        // Teñir los iconos (drawables junto al texto) con el color de texto configurado
+        val iconTintList = ColorStateList.valueOf(preferencesManager.textColor)
+        listOf(txtFPS, txtCPU, txtGPU).forEach {
+            TextViewCompat.setCompoundDrawableTintList(it, iconTintList)
+        }
 
         // Apply background customization
         updateBackground()
@@ -107,19 +126,20 @@ class OverlayView @JvmOverloads constructor(
             // Calculate alpha from opacity (0.0-1.0) to alpha (0-255)
             val alpha = (opacity * 255).toInt().coerceIn(15, 255) // Mínimo alpha de 15 para que sea visible
             
-            // Crear gradiente sutil similar al drawable original pero con opacidad controlada
-            val startColor = (alpha shl 24) or 0x000000 // Negro con alpha
-            val centerColor = ((alpha * 0.85f).toInt() shl 24) or 0x000000
-            val endColor = ((alpha * 0.7f).toInt() shl 24) or 0x000000
+            // Crear gradiente de la identidad gamer (azul marino oscuro) con opacidad controlada
+            val navy = 0x0B1020 // game_bg_deep
+            val startColor = (alpha shl 24) or navy
+            val centerColor = ((alpha * 0.85f).toInt() shl 24) or 0x101A33
+            val endColor = ((alpha * 0.7f).toInt() shl 24) or navy
             
             colors = intArrayOf(startColor, centerColor, endColor)
             gradientType = GradientDrawable.LINEAR_GRADIENT
             orientation = GradientDrawable.Orientation.TL_BR
             
-            // Borde sutil con baja opacidad
+            // Borde sutil cian con baja opacidad
             setStroke(
                 1,
-                ((opacity * 64).toInt() shl 24) or 0xFFFFFF // Blanco con alpha proporcional
+                ((opacity * 80).toInt() shl 24) or 0x22D3EE // Cian con alpha proporcional
             )
         }
         
@@ -135,6 +155,9 @@ class OverlayView @JvmOverloads constructor(
         }
         if (preferencesManager.showGpuTemp) {
             txtGPU.text = context.getString(R.string.gpu_value, formatTemperature(gpuTemp))
+        }
+        if (preferencesManager.showFpsChart) {
+            fpsChart.addSample(fps.toFloat())
         }
     }
 

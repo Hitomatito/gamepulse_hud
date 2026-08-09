@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Aura de neón detrás de la placa de icono -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <gradient
+        android:type="radial"
+        android:gradientRadius="120dp"
+        android:startColor="#4D22D3EE"
+        android:centerColor="#1F22D3EE"
+        android:endColor="#0022D3EE" />
+</shape>

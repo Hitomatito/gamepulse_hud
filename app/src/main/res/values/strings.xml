@@ -3,18 +3,19 @@
 
     <!-- Main screen -->
     <string name="app_title">GamePulse HUD</string>
+    <string name="app_icon_desc">GamePulse HUD</string>
     <string name="app_description">Monitor de rendimiento en tiempo real para juegos</string>
     <string name="app_footer">GamePulse HUD v1.0</string>
     <string name="hud_status_title">Estado del HUD</string>
     <string name="hud_status_starting">Iniciando HUD…</string>
-    <string name="btn_settings">⚙️ Configuración</string>
-    <string name="btn_exit">❌ Salir</string>
+    <string name="btn_settings">Configuración</string>
+    <string name="btn_exit">Salir</string>
 
     <!-- Settings Activity -->
     <string name="settings_activity_title">Configuración de GamePulse HUD</string>
-    <string name="reset_settings">🔄 Restablecer Configuración</string>
+    <string name="reset_settings">Restablecer Configuración</string>
     <string name="settings_reset">Configuración restablecida</string>
-    <string name="text_settings">⚙️ Configuración de Texto</string>
+    <string name="text_settings">Configuración de Texto</string>
     <string name="text_size_setting">Tamaño del texto</string>
     <string name="text_size_default">16sp</string>
     <string name="text_color_setting">Color del texto</string>
@@ -25,16 +26,17 @@
     <string name="font_style_setting">Estilo de fuente</string>
     <string name="font_weight_setting">Peso de fuente</string>
     <string name="font_preview_title">Vista previa del texto</string>
-    <string name="display_items_title">📊 Elementos a Mostrar</string>
+    <string name="display_items_title">Elementos a Mostrar</string>
     <string name="show_fps_setting">Mostrar FPS</string>
+    <string name="show_fps_chart_setting">Mostrar gráfica de FPS</string>
     <string name="show_cpu_temp_setting">Mostrar Temperatura CPU</string>
     <string name="show_gpu_temp_setting">Mostrar Temperatura GPU</string>
-    <string name="appearance_title">🎨 Apariencia</string>
+    <string name="appearance_title">Apariencia</string>
     <string name="background_opacity_setting">Opacidad del fondo</string>
     <string name="background_opacity_default">80%</string>
     <string name="corner_radius_setting">Radio de esquinas</string>
     <string name="corner_radius_default">8dp</string>
-    <string name="position_title">📍 Posición en Pantalla</string>
+    <string name="position_title">Posición en Pantalla</string>
     <string name="position_x_setting">Posición Horizontal (X)</string>
     <string name="position_y_setting">Posición Vertical (Y)</string>
     <string name="position_x_default">100px</string>
@@ -50,13 +52,8 @@
     <string name="font_sample_text">FPS: 60 | CPU: 45°C | GPU: 55°C</string>
 
     <!-- Main screen toggle button -->
-    <string name="toggle_hud_stop">⏹️ Detener HUD</string>
-    <string name="toggle_hud_start">🎮 Iniciar HUD</string>
-
-    <!-- Overlay icons -->
-    <string name="fps_icon">🎮 </string>
-    <string name="cpu_icon">🔥 </string>
-    <string name="gpu_icon">⚡ </string>
+    <string name="toggle_hud_stop">Detener HUD</string>
+    <string name="toggle_hud_start">Iniciar HUD</string>
 
     <!-- Overlay metric lines -->
     <string name="fps_value">FPS: %1$d</string>

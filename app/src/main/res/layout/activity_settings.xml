@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:background="@drawable/bg_main_screen">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +21,11 @@
             android:text="@string/settings_activity_title"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_text"
+            android:textColor="?attr/colorOnSurface"
+            android:textAllCaps="true"
+            android:letterSpacing="0.08"
+            android:shadowColor="#8022D3EE"
+            android:shadowRadius="24"
             android:gravity="center"
             android:layout_marginBottom="16dp"
             android:maxWidth="600dp" />
@@ -29,22 +34,35 @@
         <Button
             android:id="@+id/btnReset"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="56dp"
             android:layout_marginBottom="24dp"
             android:paddingHorizontal="32dp"
             android:text="@string/reset_settings"
-            android:backgroundTint="@color/button_secondary"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textColor="@color/game_text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:letterSpacing="0.08"
+            android:elevation="0dp"
+            app:background="@drawable/bg_btn_reset"
+            app:backgroundTint="@null"
+            app:rippleColor="@android:color/transparent"
+            app:icon="@drawable/ic_refresh"
+            app:iconTint="@color/game_red"
+            app:iconPadding="10dp"
+            app:iconGravity="textStart" />
 
         <!-- Text Settings Card -->
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:maxWidth="600dp"
+            app:cardBackgroundColor="?attr/colorSurfaceContainerLow"
             app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/game_card_stroke">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,7 +77,13 @@
                     android:text="@string/text_settings"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/primary_text"
+                    android:textColor="@color/game_cyan"
+                    android:shadowColor="#8022D3EE"
+                    android:shadowRadius="20"
+                    android:gravity="center_vertical"
+                    app:drawableStartCompat="@drawable/ic_text_format"
+                    app:drawableTint="?attr/colorPrimary"
+                    android:drawablePadding="8dp"
                     android:layout_marginBottom="16dp" />
 
                 <!-- Text Size -->
@@ -67,7 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/text_size_setting"
-                    android:textColor="@color/secondary_text"
+                    android:textColor="?attr/colorOnSurfaceVariant"
                     android:textSize="14sp" />
 
                 <LinearLayout
@@ -90,7 +114,7 @@
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:text="@string/text_size_default"
-                        android:textColor="@color/primary_text"
+                        android:textColor="?attr/colorOnSurface"
                         android:gravity="center" />
                 </LinearLayout>
 
@@ -99,7 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/text_color_setting"
-                    android:textColor="@color/secondary_text"
+                    android:textColor="?attr/colorOnSurfaceVariant"
                     android:textSize="14sp" />
 
                 <!-- Color Sliders -->
@@ -188,7 +212,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/color_preview_label"
-                        android:textColor="@color/secondary_text" />
+                        android:textColor="?attr/colorOnSurfaceVariant" />
                     <View
                         android:id="@+id/viewColorPreview"
                         android:layout_width="60dp"
@@ -202,7 +226,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/font_style_setting"
-                    android:textColor="@color/secondary_text"
+                    android:textColor="?attr/colorOnSurfaceVariant"
                     android:textSize="14sp"
                     android:layout_marginTop="16dp" />
 
@@ -216,7 +240,8 @@
                         android:id="@+id/spinnerFontStyle"
                         android:layout_width="match_parent"
                         android:layout_height="54dp"
-                        android:background="@android:color/transparent" />
+                        android:background="@android:color/transparent"
+                        android:popupBackground="@drawable/spinner_dropdown_bg" />
                 </FrameLayout>
 
                 <!-- Font Weight Configuration -->
@@ -224,7 +249,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/font_weight_setting"
-                    android:textColor="@color/secondary_text"
+                    android:textColor="?attr/colorOnSurfaceVariant"
                     android:textSize="14sp" />
 
                 <FrameLayout
@@ -237,7 +262,8 @@
                         android:id="@+id/spinnerFontWeight"
                         android:layout_width="match_parent"
                         android:layout_height="54dp"
-                        android:background="@android:color/transparent" />
+                        android:background="@android:color/transparent"
+                        android:popupBackground="@drawable/spinner_dropdown_bg" />
                 </FrameLayout>
 
                 <!-- Font Sample Text -->
@@ -245,7 +271,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/font_preview_title"
-                    android:textColor="@color/secondary_text"
+                    android:textColor="?attr/colorOnSurfaceVariant"
                     android:textSize="14sp" />
 
                 <TextView
@@ -254,22 +280,25 @@
                     android:layout_height="wrap_content"
                     android:text="@string/font_sample_text"
                     android:textSize="16sp"
-                    android:textColor="@color/primary_text"
+                    android:textColor="?attr/colorOnSurface"
                     android:padding="12dp"
                     android:background="@drawable/sample_text_background"
                     android:gravity="center" />
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- Display Options Card -->
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:maxWidth="600dp"
+            app:cardBackgroundColor="?attr/colorSurfaceContainerLow"
             app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/game_card_stroke">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -284,7 +313,13 @@
                     android:text="@string/display_items_title"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/primary_text"
+                    android:textColor="@color/game_cyan"
+                    android:shadowColor="#8022D3EE"
+                    android:shadowRadius="20"
+                    android:gravity="center_vertical"
+                    app:drawableStartCompat="@drawable/ic_dashboard"
+                    app:drawableTint="?attr/colorPrimary"
+                    android:drawablePadding="8dp"
                     android:layout_marginBottom="16dp" />
 
                 <LinearLayout
@@ -292,6 +327,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:minHeight="48dp"
                     android:layout_marginBottom="8dp">
 
                     <TextView
@@ -299,7 +335,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/show_fps_setting"
-                        android:textColor="@color/primary_text" />
+                        android:textColor="?attr/colorOnSurface" />
 
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switchShowFps"
@@ -313,6 +349,29 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:minHeight="48dp"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/show_fps_chart_setting"
+                        android:textColor="?attr/colorOnSurface" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchShowFpsChart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:minHeight="48dp"
                     android:layout_marginBottom="8dp">
 
                     <TextView
@@ -320,7 +379,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/show_cpu_temp_setting"
-                        android:textColor="@color/primary_text" />
+                        android:textColor="?attr/colorOnSurface" />
 
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switchShowCpuTemp"
@@ -334,6 +393,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:minHeight="48dp"
                     android:layout_marginBottom="8dp">
 
                     <TextView
@@ -341,7 +401,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/show_gpu_temp_setting"
-                        android:textColor="@color/primary_text" />
+                        android:textColor="?attr/colorOnSurface" />
 
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switchShowGpuTemp"
@@ -351,16 +411,19 @@
                 </LinearLayout>
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- Appearance Settings Card -->
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:maxWidth="600dp"
+            app:cardBackgroundColor="?attr/colorSurfaceContainerLow"
             app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/game_card_stroke">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -375,7 +438,13 @@
                     android:text="@string/appearance_title"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/primary_text"
+                    android:textColor="@color/game_cyan"
+                    android:shadowColor="#8022D3EE"
+                    android:shadowRadius="20"
+                    android:gravity="center_vertical"
+                    app:drawableStartCompat="@drawable/ic_palette"
+                    app:drawableTint="?attr/colorPrimary"
+                    android:drawablePadding="8dp"
                     android:layout_marginBottom="16dp" />
 
                 <!-- Background Opacity -->
@@ -383,7 +452,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/background_opacity_setting"
-                    android:textColor="@color/secondary_text"
+                    android:textColor="?attr/colorOnSurfaceVariant"
                     android:textSize="14sp" />
 
                 <LinearLayout
@@ -406,7 +475,7 @@
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:text="@string/background_opacity_default"
-                        android:textColor="@color/primary_text"
+                        android:textColor="?attr/colorOnSurface"
                         android:gravity="center" />
                 </LinearLayout>
 
@@ -415,7 +484,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/corner_radius_setting"
-                    android:textColor="@color/secondary_text"
+                    android:textColor="?attr/colorOnSurfaceVariant"
                     android:textSize="14sp" />
 
                 <LinearLayout
@@ -438,21 +507,24 @@
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:text="@string/corner_radius_default"
-                        android:textColor="@color/primary_text"
+                        android:textColor="?attr/colorOnSurface"
                         android:gravity="center" />
                 </LinearLayout>
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- Position Settings Card -->
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:maxWidth="600dp"
+            app:cardBackgroundColor="?attr/colorSurfaceContainerLow"
             app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/game_card_stroke">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -467,7 +539,13 @@
                     android:text="@string/position_title"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/primary_text"
+                    android:textColor="@color/game_cyan"
+                    android:shadowColor="#8022D3EE"
+                    android:shadowRadius="20"
+                    android:gravity="center_vertical"
+                    app:drawableStartCompat="@drawable/ic_place"
+                    app:drawableTint="?attr/colorPrimary"
+                    android:drawablePadding="8dp"
                     android:layout_marginBottom="16dp" />
 
                 <!-- Position X -->
@@ -475,7 +553,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/position_x_setting"
-                    android:textColor="@color/secondary_text"
+                    android:textColor="?attr/colorOnSurfaceVariant"
                     android:textSize="14sp" />
 
                 <LinearLayout
@@ -498,7 +576,7 @@
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:text="@string/position_x_default"
-                        android:textColor="@color/primary_text"
+                        android:textColor="?attr/colorOnSurface"
                         android:gravity="center" />
                 </LinearLayout>
 
@@ -507,7 +585,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/position_y_setting"
-                    android:textColor="@color/secondary_text"
+                    android:textColor="?attr/colorOnSurfaceVariant"
                     android:textSize="14sp" />
 
                 <LinearLayout
@@ -530,11 +608,11 @@
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:text="@string/position_y_default"
-                        android:textColor="@color/primary_text"
+                        android:textColor="?attr/colorOnSurface"
                         android:gravity="center" />
                 </LinearLayout>
 
-            </LinearLayout>        </androidx.cardview.widget.CardView>
+            </LinearLayout>        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 

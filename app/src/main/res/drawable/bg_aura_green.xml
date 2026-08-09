@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Aura verde (glow) del botón Iniciar HUD -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <gradient
+        android:type="radial"
+        android:gradientRadius="90dp"
+        android:startColor="#4022C55E"
+        android:centerColor="#1F22C55E"
+        android:endColor="#0022C55E" />
+</shape>
